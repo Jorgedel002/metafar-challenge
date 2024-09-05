@@ -1,5 +1,7 @@
 # Metafar challenge
 
+Para las carpetas utilizo una estructura por funcionalidad/modular la cual esta pensada para que el proyecto sea mantenible y escalable a futuro
+
 ## Pasos para la instalación
 
 ```
