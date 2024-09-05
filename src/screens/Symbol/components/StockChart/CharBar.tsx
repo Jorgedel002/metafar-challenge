@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { intervalData } from "@/src/constants/intervalData";
+import { intervalData } from "@/src/utils/constants/intervalData";
 import { SegmentedButtons } from "react-native-paper";
 
 interface CharBarProps {

@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import TableAction from "./screens/TableAction/TableAction";
-import Header from "./Header";
+import TableAction from "@/src/screens/TableAction/screen/TableAction";
+import Header from "@/src/components/Header/Header";
 
 const Home = () => {
   const insets = useSafeAreaInsets();

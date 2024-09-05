@@ -2,8 +2,7 @@ import React from "react";
 import { ScrollView, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { TimeSeriesStock } from "@/src/interface/Stocks";
-import { getLabels } from "@/src/helpers/getLabels";
-import { colors } from "@/src/constants/colors";
+import { getLabels } from "@/src/utils/helpers/getLabels";
 
 interface StockChartProps {
   stock: TimeSeriesStock | null;
@@ -18,20 +17,20 @@ const StockChart: React.FC<StockChartProps> = ({ stock, interval }) => {
     datasets: [
       {
         data: stock.values.map((value) => parseFloat(value.close)),
-        color: (opacity = 1) => `rgba(${colors.lightGreen} ${opacity})`,
+        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
         strokeWidth: 2,
       },
       {
         data: stock.values.map((value) => parseFloat(value.open)),
-        color: (opacity = 1) => `rgba(${colors.lightRed} ${opacity})`,
+        color: (opacity = 1) => `rgba(255, 99, 71, ${opacity})`,
       },
       {
         data: stock.values.map((value) => parseFloat(value.high)),
-        color: (opacity = 1) => `rgba(${colors.strongYellow} ${opacity})`,
+        color: (opacity = 1) => `rgba(255, 215, 0, ${opacity})`,
       },
       {
         data: stock.values.map((value) => parseFloat(value.low)),
-        color: (opacity = 1) => `rgba(${colors.strongBlue} ${opacity})`,
+        color: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`,
       },
     ],
     legend: ["Close", "Open", "High", "Low"],

@@ -3,11 +3,11 @@ import useStocks from "@/src/hooks/useStocks/useStocks";
 import { useLocalSearchParams } from "expo-router";
 import { TimeSeriesStock } from "@/src/interface/Stocks";
 import LoadingSpinner from "@/src/components/Loader/LoadingSpinner";
-import CharBar from "@/src/components/screens/Symbol/components/StockChart/CharBar";
-import Header from "@/src/components/screens/Symbol/components/Header/Header";
-import StockInfo from "@/src/components/screens/Symbol/components/StockInfo/StockInfo";
-import StockChart from "@/src/components/screens/Symbol/components/StockChart/StockChart";
-import MainSymbolDetails from "@/src/components/screens/Symbol/screen/SymbolScreen";
+import CharBar from "@/src/screens/Symbol/components/StockChart/CharBar";
+import Header from "@/src/screens/Symbol/components/Header/Header";
+import StockInfo from "@/src/screens/Symbol/components/StockInfo/StockInfo";
+import StockChart from "@/src/screens/Symbol/components/StockChart/StockChart";
+import MainSymbolDetails from "@/src/screens/Symbol/screen/SymbolScreen";
 import { Text, View, StyleSheet } from "react-native";
 import ErrorComponent from "../components/Errors/ErrorComponent";
 
@@ -55,7 +55,7 @@ const SymbolDetail = () => {
     <MainSymbolDetails>
       <Header />
       {error ? (
-        <ErrorComponent error={error}/>
+        <ErrorComponent error={error} />
       ) : stock ? (
         <>
           <StockInfo name={safeName} symbol={safeSymbol} />
