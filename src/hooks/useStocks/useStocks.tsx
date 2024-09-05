@@ -8,7 +8,7 @@ interface StoreState {
   stocks: Stock[];
   filteredStocks: Stock[];
   getStocks: () => void;
-  searchStocks: (searchText: string) => void;
+  searchStocks: (query: string, type: "simbolo" | "nombre") => void;
   getStocksBySymbol: (symbol: string, interval: string) => Promise<TimeSeriesStock>;
 }
 
@@ -26,11 +26,10 @@ const useStocks = create<StoreState>()(
         }));
       },
 
-      searchStocks: async (searchText: string) => {
-        const stocks = await fetchStocksSearch(searchText, get().stocks);
-        set(() => ({
-          filteredStocks: stocks,
-        }));
+      searchStocks: async (query, type) => {
+        const { stocks } = get();
+        const filtered = await fetchStocksSearch(query, stocks, type);
+        set({ filteredStocks: filtered });
       },
 
       getStocksBySymbol: async (symbol: string, interval: string) => {

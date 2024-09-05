@@ -8,7 +8,6 @@ import Header from "@/src/screens/Symbol/components/Header/Header";
 import StockInfo from "@/src/screens/Symbol/components/StockInfo/StockInfo";
 import StockChart from "@/src/screens/Symbol/components/StockChart/StockChart";
 import MainSymbolDetails from "@/src/screens/Symbol/screen/SymbolScreen";
-import { Text, View, StyleSheet } from "react-native";
 import ErrorComponent from "../components/Errors/ErrorComponent";
 
 const SymbolDetail = () => {
@@ -68,17 +67,5 @@ const SymbolDetail = () => {
     </MainSymbolDetails>
   );
 };
-
-const styles = StyleSheet.create({
-  errorContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
-  },
-  errorText: {
-    color: "red",
-    fontSize: 16,
-  },
-});
 
 export default SymbolDetail;

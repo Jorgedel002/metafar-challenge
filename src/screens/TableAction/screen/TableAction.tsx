@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import { DataTable } from "react-native-paper";
 import { commonsStyles } from "@/src/components/Styles/Styles";
@@ -26,9 +26,13 @@ const TableAction = () => {
   useFetchStocks(getStocks);
   useResetPageOnItemsPerPageChange(itemsPerPage, setPage);
 
+  const handleSearch = (query: string, type: "simbolo" | "nombre") => {
+    searchStocks(query, type);
+  };
+
   return (
     <View style={commonsStyles.mainContainer}>
-      <Search onSearch={searchStocks} />
+      <Search onSearch={handleSearch} />
       <DataTable style={{ marginTop: 30 }}>
         <TableHeader />
         {filteredStocks.slice(from, to).map((item, index) => (

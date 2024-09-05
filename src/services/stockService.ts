@@ -18,20 +18,35 @@ export const fetchStocks = async (): Promise<Stock[]> => {
   return filterRepeated;
 };
 
-export const fetchStocksSearch = async (searchText: string, stocks: Stock[]): Promise<Stock[]> => {
+export const fetchStocksSearch = async (
+  searchText: string,
+  stocks: Stock[],
+  searchType: "simbolo" | "nombre"
+): Promise<Stock[]> => {
   if (!searchText) {
     return stocks;
   }
 
-  const response = await fetch(`${API_URL}/stocks?symbol=${searchText}&apikey=${API_KEY}`);
-  const data = await response.json();
+  if (searchType === "nombre") {
+    const filteredStocks = stocks.filter(stock =>
+      stock.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    return filteredStocks;
+  } else {
+    try {
+      const response = await fetch(`${API_URL}/stocks?symbol=${searchText}&apikey=${API_KEY}`);
+      const data = await response.json();
 
-  if (data.code >= 400) {
-    console.error("Error fetching stocks");
-    return [];
+      if (!response.ok) {
+        throw new Error(data.message || "Error fetching stocks");
+      }
+
+      return data.data;
+    } catch (error) {
+      console.error("Fetch error:", error);
+      return [];
+    }
   }
-
-  return data.data;
 };
 
 export const fetchStockBySymbol = async (
